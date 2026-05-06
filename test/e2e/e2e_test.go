@@ -30,7 +30,7 @@ import (
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 
-	"github.com/yesdeepakverma/KubeQuant/test/utils"
+	"github.com/kubequant/KubeQuant/test/utils"
 )
 
 // namespace where the project is deployed in

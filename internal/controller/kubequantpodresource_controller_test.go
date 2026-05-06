@@ -27,7 +27,7 @@ import (
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
-	controllerv1 "github.com/yesdeepakverma/KubeQuant/api/v1"
+	controllerv1 "github.com/kubequant/KubeQuant/api/v1"
 )
 
 var _ = Describe("KubeQuantPodResource Controller", func() {

@@ -33,7 +33,7 @@ import (
 	logf "sigs.k8s.io/controller-runtime/pkg/log"
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 
-	controllerv1 "github.com/yesdeepakverma/KubeQuant/api/v1"
+	controllerv1 "github.com/kubequant/KubeQuant/api/v1"
 	// +kubebuilder:scaffold:imports
 )
 

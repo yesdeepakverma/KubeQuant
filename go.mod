@@ -1,4 +1,4 @@
-module github.com/yesdeepakverma/KubeQuant
+module github.com/kubequant/KubeQuant
 
 go 1.25.7
 
