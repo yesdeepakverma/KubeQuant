@@ -1,4 +1,7 @@
 # 🚀 KubeQuant
+<a href="https://github.com/kubequant/KubeQuant">
+  <img src="https://img.shields.io/badge/GitHub-KubeQuant-181717?style=for-the-badge&logo=github" />
+</a>
 
 **Percentile-Driven Kubernetes Resource Optimization Engine**
 
