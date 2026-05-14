@@ -32,7 +32,7 @@ type KubeQuantPodResourceSpec struct {
 
 	// foo is an example field of KubeQuantPodResource. Edit kubequantpodresource_types.go to remove/update
 	// +optional
-	Labels *string `json:"label,omitempty"`
+	Labels *string `json:"labels,omitempty"`
 }
 
 // KubeQuantPodResourceStatus defines the observed state of KubeQuantPodResource.

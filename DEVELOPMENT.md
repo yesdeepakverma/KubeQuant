@@ -9,3 +9,6 @@ make manifests
 
 make install
 make run
+
+
+kubectl apply -k config/samples/

@@ -1,0 +1,1 @@
+echo "example_metric 3.14" | curl --data-binary @- http://localhost:9091/metrics/job/test_job/instance/test_instance
