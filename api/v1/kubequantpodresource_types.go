@@ -23,27 +23,44 @@ import (
 // EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
 // NOTE: json tags are required.  Any new fields you add must have json tags for the fields to be serialized.
 
-// KubeQuantPodResourceSpec defines the desired state of KubeQuantPodResource
-type KubeQuantPodResourceSpec struct {
+// KubeQuantRecommendationSpec defines the desired state of KubeQuantRecommendation
+type KubeQuantRecommendationSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 	// The following markers will use OpenAPI v3 schema to validate the value
 	// More info: https://book.kubebuilder.io/reference/markers/crd-validation.html
 
-	// foo is an example field of KubeQuantPodResource. Edit kubequantpodresource_types.go to remove/update
+	// foo is an example field of KubeQuantRecommendation. Edit kubequantrecommendation_types.go to remove/update
 	// +optional
-	Labels *string `json:"labels,omitempty"`
+	Namespace           *string `json:"namespace,omitempty"`  // namespace name where deployment/pod exists to monitor for
+	Deployment          *string `json:"deployment,omitempty"` // name of the deployment to generate recommendation for. This and Pod values are mutual exclusive. The container name must be part of the deployment specification
+	Pod                 *string `json:"pod,omitempty"`        // name of the pod to generate recommendation for. The container name must be part of this pod
+	Container           *string `json:"container,omitempty"`  // name of the container to genrate the recommendation for
+	TargetCpuPercentile *int8   `json:"targetCpuPercentile"`  // target cpu percentile p95, p80, to be in 90/80 without p
+	TargetMemPercentile *int8   `json:"targetMemPercentile"`  // target cpu percentile p95, p80, to be in 90/80 without p
 }
 
-// KubeQuantPodResourceStatus defines the observed state of KubeQuantPodResource.
-type KubeQuantPodResourceStatus struct {
+type Recommendation struct {
+	RecommendedCpuRequests *int8 `json:"recommendedCpuRequests"` // recommended CPU Requests value
+	RecommendedMemRequests *int8 `json:"recommendedMemRequests"` // recommended Mem Requests value
+}
+
+type RecommendationApproval struct {
+	Approved       *bool        `json:"approved,omitempty"`
+	ApprovedTime   *metav1.Time `json:"approvedTime,omitempty"`
+	ApprovedReason *string      `json:"approvedReason,omitempty"`
+	ApprovedBy     *string      `json:"approvedBy,omitempty"`
+}
+
+// KubeQuantRecommendationStatus defines the observed state of KubeQuantRecommendation.
+type KubeQuantRecommendationStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 
 	// For Kubernetes API conventions, see:
 	// https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#typical-status-properties
 
-	// conditions represent the current state of the KubeQuantPodResource resource.
+	// conditions represent the current state of the KubeQuantRecommendation resource.
 	// Each condition has a unique type and reflects the status of a specific aspect of the resource.
 	//
 	// Standard condition types include:
@@ -55,38 +72,40 @@ type KubeQuantPodResourceStatus struct {
 	// +listType=map
 	// +listMapKey=type
 	// +optional
-	Conditions []metav1.Condition `json:"conditions,omitempty"`
+	Conditions     []metav1.Condition      `json:"conditions,omitempty"`
+	Approval       *RecommendationApproval `json:"approval,omitempty"`
+	Recommendation *Recommendation         `json:"recommendation,omitempty"`
 }
 
 // +kubebuilder:object:root=true
 // +kubebuilder:subresource:status
 
-// KubeQuantPodResource is the Schema for the kubequantpodresources API
-type KubeQuantPodResource struct {
+// KubeQuantRecommendation is the Schema for the kubequantrecommendations API
+type KubeQuantRecommendation struct {
 	metav1.TypeMeta `json:",inline"`
 
 	// metadata is a standard object metadata
 	// +optional
 	metav1.ObjectMeta `json:"metadata,omitzero"`
 
-	// spec defines the desired state of KubeQuantPodResource
+	// spec defines the desired state of KubeQuantRecommendation
 	// +required
-	Spec KubeQuantPodResourceSpec `json:"spec"`
+	Spec KubeQuantRecommendationSpec `json:"spec"`
 
-	// status defines the observed state of KubeQuantPodResource
+	// status defines the observed state of KubeQuantRecommendation
 	// +optional
-	Status KubeQuantPodResourceStatus `json:"status,omitzero"`
+	Status KubeQuantRecommendationStatus `json:"status,omitzero"`
 }
 
 // +kubebuilder:object:root=true
 
-// KubeQuantPodResourceList contains a list of KubeQuantPodResource
-type KubeQuantPodResourceList struct {
+// KubeQuantRecommendationList contains a list of KubeQuantRecommendation
+type KubeQuantRecommendationList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitzero"`
-	Items           []KubeQuantPodResource `json:"items"`
+	Items           []KubeQuantRecommendation `json:"items"`
 }
 
 func init() {
-	SchemeBuilder.Register(&KubeQuantPodResource{}, &KubeQuantPodResourceList{})
+	SchemeBuilder.Register(&KubeQuantRecommendation{}, &KubeQuantRecommendationList{})
 }

@@ -1,0 +1,37 @@
+# https://github.com/envoyproxy/gateway/tree/main/charts/gateway-helm
+deployment:
+  envoyGateway:
+    image:
+      repository:
+      tag:
+
+    securityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop: ['ALL']
+      privileged: false
+      runAsNonRoot: true
+    resources:
+      limits:
+        cpu: 700m
+        memory: 128Mi
+      requests:
+        cpu: 10m
+        memory: 64Mi
+  ports:
+    - name: grpc
+      port: 18000
+      targetPort: 18000
+    - name: ratelimit
+      port: 18001
+      targetPort: 18001
+
+hpa:
+  enabled: true
+  maxReplicas: 5
+  minReplicas: 1
+config:
+  envoyGateway:
+    logging:
+      level:
+        default: debug

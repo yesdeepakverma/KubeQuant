@@ -7,7 +7,7 @@ rules:
 - apiGroups:
   - controller.kubequant.com
   resources:
-  - kubequantpodresources
+  - kubequantrecommendations
   verbs:
   - create
   - delete
@@ -19,13 +19,13 @@ rules:
 - apiGroups:
   - controller.kubequant.com
   resources:
-  - kubequantpodresources/finalizers
+  - kubequantrecommendations/finalizers
   verbs:
   - update
 - apiGroups:
   - controller.kubequant.com
   resources:
-  - kubequantpodresources/status
+  - kubequantrecommendations/status
   verbs:
   - get
   - patch
