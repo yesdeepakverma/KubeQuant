@@ -92,8 +92,8 @@ KubeQuant takes a different approach:
 ### Installation
 
 ```bash
-git clone https://github.com/yesdeepakverma/kubequant.git
-cd kubequant
+git clone git@github.com:kubequant/KubeQuant.git
+cd KubeQuant
 make build
 ```
 
