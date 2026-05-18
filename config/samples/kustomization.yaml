@@ -1,4 +1,4 @@
 ## Append samples of your project ##
 resources:
-- controller_v1_kubequantpodresource.yaml
+- controller_v1_kubequantrecommendation.yaml
 # +kubebuilder:scaffold:manifestskustomizesamples

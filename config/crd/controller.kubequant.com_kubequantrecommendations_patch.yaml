@@ -1,0 +1,5 @@
+- op: add
+  path: /spec/names/shortNames
+  value:
+    - kqr
+    - kqrs

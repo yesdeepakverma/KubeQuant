@@ -7,11 +7,19 @@
 
 > KubeQuant is an open-source system that analyzes container resource usage using percentile-based metrics (p50, p95, p99) to generate intelligent CPU right-sizing recommendations—improving efficiency while preserving performance SLOs.
 
+
+| Metric                    | Definition                                             | Meaning in Container CPU Usage                              | Common Use in Right-Sizing                 |
+|---------------------------|--------------------------------------------------------|-------------------------------------------------------------|--------------------------------------------|
+| **p50 (50th percentile)** | The value below which 50% of all observed samples fall | Represents the typical or median CPU usage of the container | Baseline resource consumption              |
+| **p95 (95th percentile)** | The value below which 95% of all observed samples fall | Captures sustained high usage while ignoring rare spikes    | Recommended CPU request sizing             |
+| **p99 (99th percentile)** | The value below which 99% of all observed samples fall | Represents near-peak realistic usage patterns               | Safety boundary or CPU limit consideration |
+
 ---
 
 ## 🧠 Why KubeQuant?
 
-Modern Kubernetes workloads are **bursty and unpredictable**. Most existing tools rely on *average CPU usage*, which leads to:
+Modern Kubernetes workloads are **bursty and unpredictable**. 
+Most existing tools rely on *average CPU usage*, which leads to:
 
 * ❌ Over-provisioning → wasted cloud cost
 * ❌ Under-provisioning → throttling & latency spikes
@@ -92,8 +100,8 @@ KubeQuant takes a different approach:
 ### Installation
 
 ```bash
-git clone https://github.com/yesdeepakverma/kubequant.git
-cd kubequant
+git clone git@github.com:kubequant/KubeQuant.git
+cd KubeQuant
 make build
 ```
 

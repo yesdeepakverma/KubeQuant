@@ -11,17 +11,17 @@ metadata:
   labels:
     app.kubernetes.io/name: kubequant
     app.kubernetes.io/managed-by: kustomize
-  name: kubequantpodresource-admin-role
+  name: kubequantrecommendation-admin-role
 rules:
 - apiGroups:
   - controller.kubequant.com
   resources:
-  - kubequantpodresources
+  - kubequantrecommendations
   verbs:
   - '*'
 - apiGroups:
   - controller.kubequant.com
   resources:
-  - kubequantpodresources/status
+  - kubequantrecommendations/status
   verbs:
   - get

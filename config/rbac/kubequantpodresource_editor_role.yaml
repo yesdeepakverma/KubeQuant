@@ -11,12 +11,12 @@ metadata:
   labels:
     app.kubernetes.io/name: kubequant
     app.kubernetes.io/managed-by: kustomize
-  name: kubequantpodresource-editor-role
+  name: kubequantrecommendation-editor-role
 rules:
 - apiGroups:
   - controller.kubequant.com
   resources:
-  - kubequantpodresources
+  - kubequantrecommendations
   verbs:
   - create
   - delete
@@ -28,6 +28,6 @@ rules:
 - apiGroups:
   - controller.kubequant.com
   resources:
-  - kubequantpodresources/status
+  - kubequantrecommendations/status
   verbs:
   - get

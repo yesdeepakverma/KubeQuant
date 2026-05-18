@@ -30,7 +30,7 @@ import (
 	controllerv1 "github.com/kubequant/KubeQuant/api/v1"
 )
 
-var _ = Describe("KubeQuantPodResource Controller", func() {
+var _ = Describe("KubeQuantRecommendation Controller", func() {
 	Context("When reconciling a resource", func() {
 		const resourceName = "test-resource"
 
@@ -40,13 +40,13 @@ var _ = Describe("KubeQuantPodResource Controller", func() {
 			Name:      resourceName,
 			Namespace: "default", // TODO(user):Modify as needed
 		}
-		kubequantpodresource := &controllerv1.KubeQuantPodResource{}
+		kubequantrecommendation := &controllerv1.KubeQuantRecommendation{}
 
 		BeforeEach(func() {
-			By("creating the custom resource for the Kind KubeQuantPodResource")
-			err := k8sClient.Get(ctx, typeNamespacedName, kubequantpodresource)
+			By("creating the custom resource for the Kind KubeQuantRecommendation")
+			err := k8sClient.Get(ctx, typeNamespacedName, kubequantrecommendation)
 			if err != nil && errors.IsNotFound(err) {
-				resource := &controllerv1.KubeQuantPodResource{
+				resource := &controllerv1.KubeQuantRecommendation{
 					ObjectMeta: metav1.ObjectMeta{
 						Name:      resourceName,
 						Namespace: "default",
@@ -59,16 +59,16 @@ var _ = Describe("KubeQuantPodResource Controller", func() {
 
 		AfterEach(func() {
 			// TODO(user): Cleanup logic after each test, like removing the resource instance.
-			resource := &controllerv1.KubeQuantPodResource{}
+			resource := &controllerv1.KubeQuantRecommendation{}
 			err := k8sClient.Get(ctx, typeNamespacedName, resource)
 			Expect(err).NotTo(HaveOccurred())
 
-			By("Cleanup the specific resource instance KubeQuantPodResource")
+			By("Cleanup the specific resource instance KubeQuantRecommendation")
 			Expect(k8sClient.Delete(ctx, resource)).To(Succeed())
 		})
 		It("should successfully reconcile the resource", func() {
 			By("Reconciling the created resource")
-			controllerReconciler := &KubeQuantPodResourceReconciler{
+			controllerReconciler := &KubeQuantRecommendationReconciler{
 				Client: k8sClient,
 				Scheme: k8sClient.Scheme(),
 			}

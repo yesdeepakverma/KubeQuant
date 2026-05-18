@@ -1,9 +1,9 @@
 apiVersion: controller.kubequant.com/v1
-kind: KubeQuantPodResource
+kind: KubeQuantRecommendation
 metadata:
   labels:
     app.kubernetes.io/name: kubequant
     app.kubernetes.io/managed-by: kustomize
-  name: kubequantpodresource-sample
+  name: kubequantrecommendation-sample
 spec:
-  # TODO(user): Add fields here
+  labels: "app=nginx"

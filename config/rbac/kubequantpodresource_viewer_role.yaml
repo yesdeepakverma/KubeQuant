@@ -11,12 +11,12 @@ metadata:
   labels:
     app.kubernetes.io/name: kubequant
     app.kubernetes.io/managed-by: kustomize
-  name: kubequantpodresource-viewer-role
+  name: kubequantrecommendation-viewer-role
 rules:
 - apiGroups:
   - controller.kubequant.com
   resources:
-  - kubequantpodresources
+  - kubequantrecommendations
   verbs:
   - get
   - list
@@ -24,6 +24,6 @@ rules:
 - apiGroups:
   - controller.kubequant.com
   resources:
-  - kubequantpodresources/status
+  - kubequantrecommendations/status
   verbs:
   - get

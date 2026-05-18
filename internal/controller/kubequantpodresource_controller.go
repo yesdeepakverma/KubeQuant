@@ -27,26 +27,26 @@ import (
 	controllerv1 "github.com/kubequant/KubeQuant/api/v1"
 )
 
-// KubeQuantPodResourceReconciler reconciles a KubeQuantPodResource object
-type KubeQuantPodResourceReconciler struct {
+// KubeQuantRecommendationReconciler reconciles a KubeQuantRecommendation object
+type KubeQuantRecommendationReconciler struct {
 	client.Client
 	Scheme *runtime.Scheme
 }
 
-// +kubebuilder:rbac:groups=controller.kubequant.com,resources=kubequantpodresources,verbs=get;list;watch;create;update;patch;delete
-// +kubebuilder:rbac:groups=controller.kubequant.com,resources=kubequantpodresources/status,verbs=get;update;patch
-// +kubebuilder:rbac:groups=controller.kubequant.com,resources=kubequantpodresources/finalizers,verbs=update
+// +kubebuilder:rbac:groups=controller.kubequant.com,resources=kubequantrecommendations,verbs=get;list;watch;create;update;patch;delete
+// +kubebuilder:rbac:groups=controller.kubequant.com,resources=kubequantrecommendations/status,verbs=get;update;patch
+// +kubebuilder:rbac:groups=controller.kubequant.com,resources=kubequantrecommendations/finalizers,verbs=update
 
 // Reconcile is part of the main kubernetes reconciliation loop which aims to
 // move the current state of the cluster closer to the desired state.
 // TODO(user): Modify the Reconcile function to compare the state specified by
-// the KubeQuantPodResource object against the actual cluster state, and then
+// the KubeQuantRecommendation object against the actual cluster state, and then
 // perform operations to make the cluster state reflect the state specified by
 // the user.
 //
 // For more details, check Reconcile and its Result here:
 // - https://pkg.go.dev/sigs.k8s.io/controller-runtime@v0.23.3/pkg/reconcile
-func (r *KubeQuantPodResourceReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
+func (r *KubeQuantRecommendationReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
 	_ = logf.FromContext(ctx)
 
 	// TODO(user): your logic here
@@ -55,9 +55,9 @@ func (r *KubeQuantPodResourceReconciler) Reconcile(ctx context.Context, req ctrl
 }
 
 // SetupWithManager sets up the controller with the Manager.
-func (r *KubeQuantPodResourceReconciler) SetupWithManager(mgr ctrl.Manager) error {
+func (r *KubeQuantRecommendationReconciler) SetupWithManager(mgr ctrl.Manager) error {
 	return ctrl.NewControllerManagedBy(mgr).
-		For(&controllerv1.KubeQuantPodResource{}).
-		Named("kubequantpodresource").
+		For(&controllerv1.KubeQuantRecommendation{}).
+		Named("kubequantrecommendation").
 		Complete(r)
 }

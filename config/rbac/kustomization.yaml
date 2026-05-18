@@ -22,7 +22,7 @@ resources:
 # default, aiding admins in cluster management. Those roles are
 # not used by the kubequant itself. You can comment the following lines
 # if you do not want those helpers be installed with your Project.
-- kubequantpodresource_admin_role.yaml
-- kubequantpodresource_editor_role.yaml
-- kubequantpodresource_viewer_role.yaml
+- kubequantrecommendation_admin_role.yaml
+- kubequantrecommendation_editor_role.yaml
+- kubequantrecommendation_viewer_role.yaml
 

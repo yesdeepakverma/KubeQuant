@@ -15,7 +15,7 @@ resources:
   controller: true
   domain: kubequant.com
   group: controller
-  kind: KubeQuantPodResource
+  kind: KubeQuantRecommendation
   path: github.com/kubequant/KubeQuant/api/v1
   version: v1
 version: "3"
